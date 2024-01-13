@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+    transition: .3s;
+}
+
+.g1 {
+    font-size: 12rem;
+}
+
+body {
+    overflow-y: hidden;
+}
