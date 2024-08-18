@@ -61,7 +61,9 @@
                                     <svg class=" w-5 " viewBox="0 0 24 24">
                                         <path class=" group-hover:text-green-500 fill-current text-gray-500" d="M13.5 8H12v5l4.28 2.54.72-1.21-3.5-2.08V8M13 3a9 9 0 0 0-9 9H1l3.96 4.03L9 12H6a7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.896 8.896 0 0 0 13 21a9 9 0 0 0 9-9 9 9 0 0 0-9-9" /></svg>
                                 </div>
-                                <div class="flex w-8"></div>
+                                <div class=" mx-4 group cursor-pointer hover:scale-125 transform" @click=" generateQRCode(item)">
+                                    <span class=" text-white">QR</span>
+                                </div> 
                                 <div class="group cursor-pointer hover:scale-125 transform" @click="getEmpl(item) ">
                                     <svg class=" w-5 " viewBox="0 0 24 24">
                                         <path class=" group-hover:text-red-500 fill-current text-gray-500" d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z" /></svg>
@@ -73,6 +75,9 @@
             </div>
         </div>
     </div>
+    <div @click=" hide_qr=false" :class="hide_qr==true?' z-50 opacity-100':' z-0 opacity-0'"    class=" bg_transp fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <canvas ref="qrCanvas" class="qr-code-canvas"></canvas>
+    </div>
 </div>
 </template>
 
@@ -82,6 +87,8 @@ import historique from "./employee/historiqueView.vue"
 import suppr from "./employee/suppView.vue"
 
 import MiddelFunction from '../middel_function/' 
+
+import QRCode from 'qrcode';
 export default {
     components: {
         formulaire,
@@ -92,7 +99,11 @@ export default {
         return {
             liste_employe: [{
 
-            }, ]
+            }, ],
+            hide_qr:false,
+            text: '',
+            logoSrc: `${require('../assets/img/logo.png')}`, // Remplacez par le chemin réel de votre logo
+            qrCodeSize: 200,
         }
     },
     methods: {
@@ -134,7 +145,37 @@ export default {
             this.$store.state.show_emp_supp = true
             this.$store.state.employe = val
             console.log(val);
+        },
+        async generateQRCode(val) {
+            
+        try {
+          const canvas = this.$refs.qrCanvas;
+          const context = canvas.getContext('2d');
+          canvas.width = this.qrCodeSize;
+          canvas.height = this.qrCodeSize;
+  
+          // Générer le QR code sur le canvas
+          await QRCode.toCanvas(canvas, JSON.stringify(val), {
+            width: this.qrCodeSize,
+            height: this.qrCodeSize,
+          });
+  
+          // Ajouter le logo au centre du QR code
+          const logo = new Image();
+          logo.src = this.logoSrc;
+          logo.onload = () => {
+            const logoSize = this.qrCodeSize / 5;
+            const logoX = (canvas.width - logoSize) / 2;
+            const logoY = (canvas.height - logoSize) / 2;
+            context.drawImage(logo, logoX, logoY, logoSize, logoSize);
+            
+        this.hide_qr=true
+          };
+        } catch (error) {
+          console.error('Failed to generate QR code', error);
         }
+        
+      },
     },
 
     mounted() {
@@ -154,6 +195,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
+ .bg_transp{
+    background: rgba(0, 0, 0, 0.655);
+ }
   </style>

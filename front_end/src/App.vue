@@ -78,27 +78,27 @@ export default {
         }
     },
     mounted() {
-        this.getStatus();
-        this.verify_conge();
+        // this.getStatus();
+        // this.verify_conge();
 
-        setTimeout(() => {
-            this.$store.state.all_conge.forEach(element => {
-                if (element.im_emp, this.restDate(this.endDate(element.conge_date_enreg, element.nbr_jour)) <= 0) {
-                    console.log(element.id_conge, this.restDate(this.endDate(element.conge_date_enreg, element.nbr_jour)));
+        // setTimeout(() => {
+        //     this.$store.state.all_conge.forEach(element => {
+        //         if (element.im_emp, this.restDate(this.endDate(element.conge_date_enreg, element.nbr_jour)) <= 0) {
+        //             console.log(element.id_conge, this.restDate(this.endDate(element.conge_date_enreg, element.nbr_jour)));
 
-                    this.$store.commit('update', this.array = {
-                        url: 'api/congeUp',
-                        id_conge: element.id_conge,
-                        etat_conge: 0,
-                    });
-                }
-            });
-        }, 200);
+        //             this.$store.commit('update', this.array = {
+        //                 url: 'api/congeUp',
+        //                 id_conge: element.id_conge,
+        //                 etat_conge: 0,
+        //             });
+        //         }
+        //     });
+        // }, 200);
 
-        this.$store.commit('getDash', this.array = {
-            url: 'api/dashboard',
-            date_: this.date_,
-        });
+        // this.$store.commit('getDash', this.array = {
+        //     url: 'api/dashboard',
+        //     date_: this.date_,
+        // });
 
     },
     create() {

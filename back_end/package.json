@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "serve": "nodemon server.js",
     "prod": "nodemon server.js"
   },
-  "author": "",
+  "author": "DAMA Dany",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
@@ -19,8 +19,6 @@
     "cors": "^2.8.5",
     "dateformat": "^5.0.2",
     "dotenv": "^10.0.0",
-    "easyimage": "^2.2.1",
-    "electron-squirrel-startup": "^1.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "gm": "^1.23.1",
@@ -33,18 +31,10 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15",
     "officeparser": "^2.3.0",
-    "pdfkit": "^0.13.0",
-    "sharp": "^0.30.7",
+    "pdfkit": "^0.13.0", 
     "socket.io": "^4.4.1",
     "winston": "^3.4.0",
     "winston-daily-rotate-file": "^4.5.5",
     "xlsx": "^0.18.5"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.67",
-    "@electron-forge/maker-deb": "^6.0.0-beta.67",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.67",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.67",
-    "@electron-forge/maker-zip": "^6.0.0-beta.67"
   }
 }

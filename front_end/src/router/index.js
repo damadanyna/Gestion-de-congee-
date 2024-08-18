@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router' 
 import home from '../views/accueilView.vue'
+import orgChart from '../views/orgchartView.vue'
 import employee from '../views/employeeView.vue'
 import presence from '../views/presenceView.vue'
 import dashBord from '../views/tableauDeBordView.vue'
@@ -15,6 +16,12 @@ const routes = [
     path: '/',
     name: 'welcome',
     component: home
+
+  },           
+  {
+    path: '/organigramme',
+    name: 'organigramme',
+    component: orgChart
 
   },          
   {
