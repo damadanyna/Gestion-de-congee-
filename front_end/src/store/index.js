@@ -6,7 +6,7 @@ export default createStore({
         data: {
             user: {
                 nom: 'admin',
-                util_status: 1,
+                util_status: 0,
                 status: true
             }
         },

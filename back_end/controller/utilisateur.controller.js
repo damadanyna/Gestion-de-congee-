@@ -91,7 +91,7 @@ class Utilisateur{
              
             if(_f.length > 0){
                 await D.exec_params(`update utilisateur set util_status='1' where util_email = ? and util_pass = ?`,[email,pass])
-                return res.send({status:true,message:'connection fait'})
+                return res.send({status:true,data:_f,message:'connection fait'})
             }else{
                 return res.send({status:false,message:"L'utilisateur n'existe pas"})
             }

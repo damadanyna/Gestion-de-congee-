@@ -10,8 +10,15 @@ import singIn from '../views/auth/signinView.vue'
 import annuel from '../views/conge/annuelleView.vue'
 import mat from '../views/conge/matePatView.vue'
 import permission from '../views/conge/permissionView.vue'
+import cam from '../views/appareilView.vue'
 
 const routes = [        
+  {
+    path: '/scanQRCode',
+    name: 'cam',
+    component: cam
+
+  },     
   {
     path: '/',
     name: 'welcome',

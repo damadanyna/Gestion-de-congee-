@@ -1,8 +1,5 @@
 <template>
-    <div class="qr-code-generator">
-      <h1>QR Code Generator</h1>
-      <input v-model="text" placeholder="Enter text to generate QR code" />
-      <button @click="generateQRCode">Generate QR Code</button>
+    <div class="qr-code-generator " > 
       <canvas ref="qrCanvas" class="qr-code-canvas"></canvas>
     </div>
   </template>
@@ -14,7 +11,7 @@
     data() {
       return {
         text: '',
-        logoSrc: '  ', // Remplacez par le chemin réel de votre logo
+        logoSrc: `${require('../assets/img/logo.png')}`, // Remplacez par le chemin réel de votre logo
         qrCodeSize: 200,
       };
     },
@@ -27,7 +24,7 @@
           canvas.height = this.qrCodeSize;
   
           // Générer le QR code sur le canvas
-          await QRCode.toCanvas(canvas, this.text, {
+          await QRCode.toCanvas(canvas,JSON.stringify( this.$store.state.data.user), {
             width: this.qrCodeSize,
             height: this.qrCodeSize,
           });
@@ -46,6 +43,9 @@
         }
       },
     },
+    mounted(){
+      this.generateQRCode()
+    }
   };
   </script>
   

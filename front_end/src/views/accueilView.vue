@@ -1,37 +1,50 @@
 <template>
   <loginView v-if="!this.$store.state.data.user.util_status==1"></loginView>
   <div v-else class=" flex flex-col w-full h-full">
-      <div class="flex justify-between w-full">
-          <div class=" flex flex-row w-60 rounded-xl justify-center mt-3 ml-3 items-center bg-indigo-600">
-              <svg class=" w-7" viewBox="0 0 24 24">
-                  <path class=" fill-current text-white" d="M10 4v4h4V4h-4m6 0v4h4V4h-4m0 6v4h4v-4h-4m0 6v4h4v-4h-4m-2 4v-4h-4v4h4m-6 0v-4H4v4h4m0-6v-4H4v4h4m0-6V4H4v4h4m2 6h4v-4h-4v4M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4c-1.08 0-2-.9-2-2V4a2 2 0 0 1 2-2z" /></svg>
-              <span class=" text-2xl text-white ">Page d'accueil</span>
-          </div>
-          <div @click="this.$store.state.decView=false" class="  px-4 py-1 hover:scale-125 transform group cursor-pointer" title=" Deconnectez ?">
-              <svg class=" w-7" viewBox="0 0 24 24">
-                  <path class=" fill-current  " :class="this.$store.state.is_dark?'text-white group-hover:text-red-600':'text-gray-700 group-hover:text-red-600'" d="m16.56 5.44-1.45 1.45A5.969 5.969 0 0 1 18 12a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-2.17 1.16-4.06 2.88-5.12L7.44 5.44A7.961 7.961 0 0 0 4 12a8 8 0 0 0 8 8 8 8 0 0 0 8-8c0-2.72-1.36-5.12-3.44-6.56M13 3h-2v10h2" /></svg>
-          </div>
-      </div>
-      <div class=" flex justify-center w-full  h-full items-center">
-          <div class=" grid sm:grid-cols-3 grid-cols-2 w-full md:w-auto overflow-auto max-h-[90%]   ">
-              <router-link v-for="item, i in boites" :key="i" :to="item.url" class="  hover:border-indigo-500 group transform ml-4 sm:hover:scale-110 sm:px-16 sm:py-8 sm:mx-5 my-3 border rounded-lg cursor-pointer border-gray-400">
-                  <div class="flex flex-col items-center ">
-  
-                      <svg viewBox="0 0 24 24" class=" w-[8rem] sm:w-auto">
-                          <path class=" fill-current group-hover:text-indigo-500 text-gray-400" :d="item.icon" /></svg>
-                      <span class=" text-lg text-gray-400 sm:text-xl group-hover:text-indigo-500">{{item.title}}</span>
-                  </div>
-              </router-link>
-          </div>
-      </div>
+    <div class="flex flex-col w-full h-full" v-if="this.$store.state.data.user.util_name=='Banay'">
+            <div class="flex justify-between w-full" >
+                <div class=" flex flex-row w-60 rounded-xl justify-center mt-3 ml-3 items-center bg-indigo-600">
+                    <svg class=" w-7" viewBox="0 0 24 24">
+                        <path class=" fill-current text-white" d="M10 4v4h4V4h-4m6 0v4h4V4h-4m0 6v4h4v-4h-4m0 6v4h4v-4h-4m-2 4v-4h-4v4h4m-6 0v-4H4v4h4m0-6v-4H4v4h4m0-6V4H4v4h4m2 6h4v-4h-4v4M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4c-1.08 0-2-.9-2-2V4a2 2 0 0 1 2-2z" /></svg>
+                    <span class=" text-2xl text-white ">Page d'accueil</span>
+                </div>
+                <div class="flex flex-row items-center text-white">  
+                    <router-link to="/scanQRCode"  class=" cursor-pointer">Appareil</router-link  >
+                    <div @click="this.$store.state.decView=false" class="  px-4 py-1 hover:scale-125 transform group cursor-pointer" title=" Deconnectez ?">
+                        <svg class=" w-7" viewBox="0 0 24 24">
+                            <path class=" fill-current  " :class="this.$store.state.is_dark?'text-white group-hover:text-red-600':'text-gray-700 group-hover:text-red-600'" d="m16.56 5.44-1.45 1.45A5.969 5.969 0 0 1 18 12a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-2.17 1.16-4.06 2.88-5.12L7.44 5.44A7.961 7.961 0 0 0 4 12a8 8 0 0 0 8 8 8 8 0 0 0 8-8c0-2.72-1.36-5.12-3.44-6.56M13 3h-2v10h2" /></svg>
+                    </div>
+                </div>
+            </div>
+            <div class=" flex justify-center w-full  h-full items-center">
+                <div class=" grid sm:grid-cols-3 grid-cols-2 w-full md:w-auto overflow-auto max-h-[90%]   ">
+            
+                    <router-link v-for="item, i in boites" :key="i" :to="item.url" class="  hover:border-indigo-500 group transform ml-4 sm:hover:scale-110 sm:px-16 sm:py-8 sm:mx-5 my-3 border rounded-lg cursor-pointer border-gray-400">
+                        <div class="flex flex-col items-center ">
+        
+                            <svg viewBox="0 0 24 24" class=" w-[8rem] sm:w-auto">
+                                <path class=" fill-current group-hover:text-indigo-500 text-gray-400" :d="item.icon" /></svg>
+                            <span class=" text-lg text-gray-400 sm:text-xl group-hover:text-indigo-500">{{item.title}}</span>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+        
+    </div>
+    
+    <div v-else class=" flex flex-col w-full h-full items-center justify-center">
+         <pageQRView></pageQRView>
+    </div>
   </div>
   </template>
   
   <script>
   import loginView from './auth/loginView.vue'
+  import pageQRView from './pageQRView.vue';
   export default {
       components: {
-          loginView
+          loginView,
+          pageQRView
       },
       data() {
           return {

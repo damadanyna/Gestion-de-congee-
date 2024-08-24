@@ -47,7 +47,7 @@ io.on('connection',(socket)=>{
 
 app.use('/api',require('./routes/api.route'))
 
-http.listen(4044)
+http.listen(8080)
 
 
 /*

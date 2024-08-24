@@ -1,9 +1,9 @@
 <template>
 <div class="flex flex-row  px-5 items-center justify-between w-full h-full  ">
     <div class=" flex flex-col w-full items-center ">
-        <span class="   text-red-500"> Ministere de l'economie et des Finances</span>
-        <span class=" text-3xl font-bold text-green-500"> Gestion de pointage</span>
-        <span class=" "> Développer par Benito</span>
+        <span class="   text-red-500"> Ministere du travail,de l emploi et de la fonction publique</span>
+        <span class=" text-3xl font-bold text-green-500"> Gestion de pointage du personnel</span>
+        <span class=" "> Développer par Hery</span>
     </div>
     <div class=" flex flex-col w-full items-start">
         <div class="flex flex-col clear-left   py-4 px-5 rounded-xl  ">
